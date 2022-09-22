@@ -1,18 +1,14 @@
 // Min number of participants for handshakes
 
 function getParticipants(handshakes){
+    let participants = 2 // less than 2 does not make sense
+    
     if(handshakes <= 0) {
       return 0
     } else {
-        participants = 2
-        while(true) {
-            maxHandshakes = (participants*(participants-1))/2
-            if (maxHandshakes >= handshakes){
-                return participants
-            } else {
-                participants++
-            }
+        while(handshakes > ((participants*(participants-1))/2)) {
+            participants++
         }
     }
-    return 0
+    return participants
   }
