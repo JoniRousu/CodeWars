@@ -19,6 +19,9 @@ if (resp.status_code != 200):
 data = resp.json()
 kataName = data['name']
 kataNameStripped = kataName.replace(" ","")
+invalid = '<>:"/\|?*. '
+for char in invalid:
+	kataNameStripped = kataNameStripped.replace(char, '')
 description=data['description']
 
 os.mkdir(kataNameStripped)
