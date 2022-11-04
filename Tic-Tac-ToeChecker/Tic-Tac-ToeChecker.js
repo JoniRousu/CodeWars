@@ -37,4 +37,16 @@ function isSolved(board) {
             return combinations[i][0];
         }
     }
+    
+    // No winner: check if there are empty fields
+
+    let boardValues = board[0];
+    boardValues = boardValues.concat(board[1]);
+    boardValues = boardValues.concat(board[2]);
+  
+    if (boardValues.find(empty => empty === 0) != undefined) {
+        return -1; // Game is still going
+    }
+
+    return 0;
   }
