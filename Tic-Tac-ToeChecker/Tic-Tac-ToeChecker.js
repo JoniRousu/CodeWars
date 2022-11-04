@@ -35,20 +35,22 @@ function isSolved(board) {
     for (let i = 0; i < combinations.length; i++) {
         if (combinations[i].every( (val, j, arr) => val === arr[0] )) {
             if (combinations[i][0] != 0) {
-                return combinations[i][0];
+                return combinations[i][0]; // X or O won
             }
         }
     }
     
     // No winner: check if there are empty fields
 
-    let boardValues = board[0];
-    boardValues = boardValues.concat(board[1]);
-    boardValues = boardValues.concat(board[2]);
-  
+    let boardValues = [];
+
+    for (let i = 0; i < board.length; i++) {
+        boardValues = boardValues.concat(board[i]);
+    }
+
     if (boardValues.find(empty => empty === 0) != undefined) {
         return -1; // Game is still going
     }
 
-    return 0;
+    return 0; // It's a cat's game
   }
