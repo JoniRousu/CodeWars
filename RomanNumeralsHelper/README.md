@@ -28,4 +28,6 @@ RomanNumerals.fromRoman('M'); // should return 1000
 | D      | 500    |
 | M      | 1000   |
 
+***
+
 [Link to Kata](https://www.codewars.com/kata/51b66044bce5799a7f000003)

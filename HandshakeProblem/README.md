@@ -8,4 +8,7 @@ However, Johnny would like to know the minimal amount of people that participate
 
 Help Johnny by writing a function, that takes the amount of handshakes and returns the minimal amount of people needed to perform these handshakes (a pair of farmers handshake only once).
 
-[Link to Kata](https://www.codewars.com/kata/5574835e3e404a0bed00001b)
+
+***
+
+[Link to Kata](https://www.codewars.com/kata/5574835e3e404a0bed00001b/javascript)
