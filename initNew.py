@@ -8,6 +8,7 @@ if (len(sys.argv) != 2):
     exit(1)
 
 url = 'https://www.codewars.com/api/v1/code-challenges/'
+kataUrl = 'https://www.codewars.com/kata/'
 id = sys.argv[1]
 resp = requests.get(url=url+id)
 
@@ -23,7 +24,7 @@ description=data['description']
 os.mkdir(kataNameStripped)
 
 with open(kataNameStripped + '/README.md', 'w') as f:
-    f.write('# '+ kataName + '\n\n' + description)
+    f.write('# '+ kataName + '\n\n' + description + '\n\n***\n\n[Link to Kata](' + kataUrl + id + '/javascript)')
 
 open(kataNameStripped + '/' + kataNameStripped + '.js', 'x').close()
 
