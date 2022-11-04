@@ -9,7 +9,7 @@ function isSolved(board) {
     for (let i = 0; i < 3; i++) {
         vert1[i] = board[i][0];
         vert2[i] = board[i][1];
-        vert2[i] = board[i][2];
+        vert3[i] = board[i][2];
     }
 
     let vertical = [vert1, vert2, vert3];
