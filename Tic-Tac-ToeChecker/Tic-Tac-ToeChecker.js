@@ -1,14 +1,6 @@
 function isSolved(board) {
 
-    // Check horizontally
-
-    for (let i = 0; i < 3; i++) {
-        if (board[i].every( (val, j, arr) => val === arr[0] )) {
-            return board[i][0];
-        }
-    }
-
-    // Check vertically
+    // Prepare vertical arrays
     
     let vert1 = [0,0,0];
     let vert2 = [0,0,0];
@@ -22,13 +14,7 @@ function isSolved(board) {
 
     let vertical = [vert1, vert2, vert3];
 
-    for (let i = 0; i < vertical.length; i++) {
-        if (vertical[i].every( (val, j, arr) => val === arr[0] )) {
-            return vertical[i][0];
-        }
-    }
-
-    // Check diagonally
+    // Prepare diagonal arrays
 
     let diag1 = [0,0,0];
     let diag2 = [0,0,0];
@@ -40,9 +26,15 @@ function isSolved(board) {
 
     let diagonal = [diag1, diag2];
 
-    for (let i = 0; i < diagonal.length; i++) {
-        if (diagonal[i].every( (val, j, arr) => val === arr[0] )) {
-            return horizontal[i][0];
+    let combinations = [board[0], board[1], board[2],
+                        vertical[0], vertical[1], vertical[2],
+                        diagonal[0], diagonal[1]];
+
+    // Check for a winner
+
+    for (let i = 0; i < combinations.length; i++) {
+        if (combinations[i].every( (val, j, arr) => val === arr[0] )) {
+            return combinations[i][0];
         }
     }
   }
