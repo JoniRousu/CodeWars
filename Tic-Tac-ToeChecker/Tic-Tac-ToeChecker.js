@@ -34,7 +34,9 @@ function isSolved(board) {
 
     for (let i = 0; i < combinations.length; i++) {
         if (combinations[i].every( (val, j, arr) => val === arr[0] )) {
-            return combinations[i][0];
+            if (combinations[i][0] != 0) {
+                return combinations[i][0];
+            }
         }
     }
     
