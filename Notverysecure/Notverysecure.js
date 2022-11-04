@@ -1,3 +1,3 @@
 function alphanumeric(string){
-    //your code here
+    return /^[a-zA-Z0-9]+$/.test(string)
   }
