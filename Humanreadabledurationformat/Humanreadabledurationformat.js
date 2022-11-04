@@ -1,67 +1,53 @@
 function formatDuration (seconds) {
-    let duration = seconds;
-    let minute = 60;
-    let hour = 60 * minute;
-    let day = 24 * hour;
-    let year = 365 * day;
-
-    let years = 0;
-    let days = 0;
-    let hours = 0;
-    let minutes = 0;
-    let _seconds = 0;
-
     if (seconds === 0) {
         return "now";
     }
 
-    years = Math.floor(duration/year);
-    duration -= years*year;
-
-    days = Math.floor(duration/day);
-    duration -= days*day;
-
-    hours = Math.floor(duration/hour);
-    duration -= hours*hour;
+    let dur = seconds;
     
-    minutes = Math.floor(duration/minute);
-    duration -= minutes*minute;
-    
-    _seconds = duration;
+    let minute = 60;
+    let hour = 60 * minute;
+    let day = 24 * hour;
+    let year = 365 * day;
+    let durations = [year, day, hour, minute];
+
+    let duration = [0,0,0,0];
+
+    for (let i = 0; i < duration.length; i++) {
+        duration[i] = Math.floor(dur/durations[i]);
+        dur -= duration[i]*durations[i];
+    }
+
+    duration.push(dur); // Remaining seconds
 
     // Output
 
-    let durationArray = [years, days, hours, minutes, _seconds];
-    let durationNamesArray = ["year", "day", "hour", "minute", "second"];
+    let durationNames = ["year", "day", "hour", "minute", "second"];
 
-    let HumanReadableArray = [];
+    let HumanReadable = [];
 
-    for (let i = 0; i < durationArray.length; i++) {
-        if (durationArray[i] > 0) {
-            let tempStr = "";
-            tempStr += durationArray[i] + " " + durationNamesArray[i];
-            if (durationArray[i] > 1) {
-                tempStr += "s"
+    for (let i = 0; i < duration.length; i++) {
+        if (duration[i] > 0) {
+            HumanReadable.push(duration[i] + " " + durationNames[i]);
+            if (duration[i] > 1) {
+                HumanReadable.push(HumanReadable.pop() + "s");
             }
-            HumanReadableArray.push(tempStr);
         }
     }
 
     // Build the String
 
-    let HumanReadable = "";
+    let HumanReadableOutput = "";
 
-    for (let i = 0; i < HumanReadableArray.length; i++) {
-        HumanReadable += HumanReadableArray[i];
-        if (HumanReadableArray.length > 1) {
-            if (i == HumanReadableArray.length-2) {
-                HumanReadable += " and ";
-            } else if (i < HumanReadableArray.length-1) {
-                HumanReadable += ", ";
-            } 
+    while (HumanReadable.length > 0) {
+        HumanReadableOutput += HumanReadable.shift();
+        switch (HumanReadable.length) {
+            case 0: break;
+            case 1: HumanReadableOutput += " and "; break;
+            default:HumanReadableOutput += ", "; break;
         }
     }
 
-    return HumanReadable;
+    return HumanReadableOutput;
   }
   
