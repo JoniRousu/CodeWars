@@ -18,3 +18,7 @@ We want our function to return:
 * `0` if it's a cat's game (i.e. a draw).
 
 You may assume that the board passed in is valid in the context of a game of Tic-Tac-Toe.
+
+***
+
+[Link to Kata](https://www.codewars.com/kata/525caa5c1bf619d28c000335/javascript)
