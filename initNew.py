@@ -17,7 +17,7 @@ if (resp.status_code != 200):
     exit(1)
 
 data = resp.json()
-kataName = data['name']
+kataName = data['name'].title()
 kataNameStripped = kataName.replace(" ","")
 invalid = '<>:"/\|?*. '
 for char in invalid:
